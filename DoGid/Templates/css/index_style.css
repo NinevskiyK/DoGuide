@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+}
+body {
+  background: url(https://sun9-68.userapi.com/c204524/v204524332/57158/I2BvVycoVks.jpg) repeat;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Roboto';
+}
+.form-wrap {
+  width: 35%;
+  height: 80%;
+  border-radius: 20px;
+  /* margin: 0 auto; */
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 450px;
+  min-width: 350px;
+  
+}
+
+
+form {
+  background: white;
+  width: 90%;
+  height: 90%;
+  border-radius: 5px 5px 5px 5px;
+  color: #7b7b7b;
+  padding: 20px;
+  padding-left: 9%;
+}
+
+form div {
+  position: relative;
+  width: 95%;
+  margin-bottom: 7%;
+}
+h2 {
+  color: #555555;
+  font-size: 210%;
+  position: relative;
+  font-family: 'Roboto';
+  margin-top: 7%;
+  height: 20%;
+  font-weight: 100;
+  letter-spacing: 4px;
+}
+
+
+label,
+span {
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+input[type="text"] {
+  border-width: 0.5px;
+  border-style: solid;
+    border-color: #9c9c9c;
+    border-radius: 4px;
+  outline: none;
+  width: 97%;
+  padding: 10px 15px;
+  background: white;
+  font-family: 'Roboto';
+    font-size: 160%;
+    height: 10%;
+    font-weight: 100;
+}
+input[type="num"]{
+    border-style: solid;
+    border-color: #9c9c9c;
+    border-width: 0.5px;
+    border-radius: 4px;
+    width: 37.2%;
+
+    
+}
+
+.intlet_amount {
+    display: flex;
+    justify-content: space-between;
+    width: 93%;
+    font-size: 170%;
+    height: 10%;
+    font-weight: 100;
+}
+
+
+button {
+  padding: 10px 0;
+  border-width: 0;
+  display: block;
+  width: 93%;
+  background: rgb(250, 237, 228);
+  color: white;
+  font-size: 160%;
+  outline: none;
+  color: #6d6c6c;
+  border-style: solid;
+  border-color: #9c9c9c;
+  border-width: thin;
+  border-radius: 4px;
+  margin-top: 10%;
+  height: 13%;
+}
+  
+p{
+    margin-top: 10px;
+}
+
+.inlet{
+    margin-top: 20px;
+    font-weight: 100;
+}
+
+.find{
+  margin-bottom: 0;
+  padding-right: 65%;
+  font-weight: 100;
+}

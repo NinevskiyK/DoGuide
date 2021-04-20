@@ -1,0 +1,72 @@
+html, body{
+    height: 100%;
+    font-family: 'Roboto';
+    letter-spacing: 3px;
+}
+
+.header{
+    width: 100%;
+    height: 20%;
+    overflow: hidden;
+}
+.find{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 56%;
+    height: 60%;
+    border-style: solid;
+    border-color: #707070;
+    border-width: thin;
+    border-radius: 8px;
+}
+.find_text{
+    font-size: 200%;
+    color: #888;
+    margin-left: 5%;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    overflow: hidden;
+    height: 67%;
+}
+.offer{
+    margin-left: 30px;
+    margin-top: 40px;
+    width: 20%;
+    height: 100%;
+    min-width: 300px;
+    min-height: 200px;  
+}
+
+.offer_img_box{
+    width: 90%;
+    height: 60%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 10px 10px 18px -15px rgba(0,0,0,0.75);
+}
+.offer_img{
+    height: 100%;
+    margin-left: -80px;
+}
+.explanation{
+    margin-left: 4%;
+    color: #777;
+    font-size: 150%;
+}
+.location{
+    color: #444;
+    margin-left: 4%;
+    font-weight: 700;
+    font-size: 150%;
+}
+.button{
+    right: 1%;
+    top: 37%;
+    position: absolute;
+    z-index: 100;
+}

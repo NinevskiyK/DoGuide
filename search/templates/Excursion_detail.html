@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%  static 'search/reset.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'search/excursion.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">DoGuide</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'my-profile' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'excursion' %}">All excursions</a>
+        </li>
+      </ul>
+        <style>.username {
+            color: whitesmoke;
+        }
+        .logout{
+            padding-left: 10px;
+        }</style>
+        <div class="username">
+            You logged as
+        {{ user.username }}
+            </div>
+        <div class="logout">
+      <form class="form-inline mt-2 mt-md-0">
+        <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'logout' %}">Logout</a>
+      </form>
+            </div>
+    </div>
+  </nav>
+</header>
+{% if book != 2 %}
+<script>
+    jQuery.noConflict();
+    (function( $ ) {
+        $(function() {
+         // More code using $ as alias to jQuery
+         $(document).ready(function(){
+                 $('#bookedModal').modal('show');
+          });
+            });
+        })(jQuery);
+</script>
+{% endif %}
+{% load static %}
+{% load static %}
+<div class="main">
+<div class="photo_ans_decr">
+<img src="{{ user.profile.Img.url }}" alt="Profile-photo" class="profile-photo">
+    <p class="description">{{ excursion.Short_description }}</p>
+</div><br>
+<ul>
+    <li>Автор экскурсии: <a href="{% url 'profile-detail' user.pk %}" class="btn btn-primary" > {{ user.username }}</a></li>
+    <li id="p-tour">Макс. количество людей: {{ excursion.Max_number }}</li>
+    <li id="t-tour">Время экскурсии: {{ excursion.Time }} {% if excursion.Time == 1 %}час {% else %} часа {% endif %}</li>
+    <li id="c-tour">Стоимость экскурсии: {{ excursion.Cost }} {% if excursion.Time == 1 %} балл {% else %} баллов {% endif %}</li>
+</ul>
+    {% if can_edit %}
+<a class="btn btn-primary edit" href="{% url 'excursion-edit' excursion.pk %}">edit</a>
+        <a class="btn btn-primary edit" href="{% url 'excursion-check' excursion.pk %}">check</a>
+        {% elif book != 1 %}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#book">Book</button>
+    {% endif %}
+
+        <div class="modal fade" id="book" tabindex="-1" role="dialog" aria-labelledby="bookLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="form-signin" method="post">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="validationTooltipUsernamePrepend">vk.com/</span>
+                        </div>
+                        <input type="text" name="vk" maxlength="50" class="form-control" required id="id_vk">
+                        <small id="id_username" class="form-text text-muted">Введи ссылку на твой ВК</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_data">Введите дату:</label>
+                        <input type="date" name="data" class="form-control" required id="id_data">
+                        <small id="id_username" class="form-text text-muted">Выбери удобное для тебя число, позже вы договритесь подробнее с экскурсоводом</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Book</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+<div id="map"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU&amp;apikey=0be7f9af-cccd-4838-af31-9e9a8d19df0f" type="text/javascript"></script>
+<script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+<script src="{% static 'search/map.js' %}" type="text/javascript"></script>
+
+<div class="modal fade" id="bookedModal" tabindex="-1" role="dialog" aria-labelledby="bookedModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          {% if book == 1 %}
+            <h5 class="modal-title" id="bookedModalLabel">Booked!</h5>
+        {% elif book == 0 %}
+        <h5 class="modal-title" id="bookedModalLabel">Something went wrong!</h5>
+        {% endif %}
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {% if book == 1 %}
+        You successfully booked to this excursion. Please wait while guide will contact with you!
+        {% elif book == 0 %}
+        Something went wrong, please, try again!
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
