@@ -1,5 +1,5 @@
 # DoGuide
- Сайт для создания и поиска экскурсий, предлагающий бесплатные экскурсии за проведенные в своем городе другим людям.
+ Site for creating and searching for excursions, offering free excursions for showing your city to other people.
 # How to run?
 1) Install Python 3.6
 2) Install Django - run this command in console: **python -m pip install Django** (for IOS and Linux) or **py -m pip install Django** (for Windows)
